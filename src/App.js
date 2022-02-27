@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./App.css";
 import Modal from "../src/components/Modal.js";
 
+
 function App() {
   const [openModal, setOpenModal] = useState(false);
 
@@ -11,7 +12,17 @@ function App() {
       <button className="abrirmodal" onClick={() => setOpenModal(true)}>
         Abrir
       </button>
-      {openModal && <Modal closeModal={setOpenModal} />}
+    <Modal closeModal={setOpenModal} openModal={openModal}
+    title='Santi feo'
+    menssage='By Eli'
+  
+    >
+      <img
+          src={require("../src/check-mark.png")}
+          alt="add-expense"
+          className="add-img"
+        />
+      </Modal>
     </div>
   );
 }

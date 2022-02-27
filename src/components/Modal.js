@@ -1,25 +1,26 @@
 import React from "react";
-import './Modal.css'
+import { Overlay, ModalContainer, CloseBtn } from "./StyledModal.js";
+// import { ALERT_VARIANTS, AlertWrapper, getBackgroundColor } from './Intento.js'
 
-function Modal({closeModal}) {
+
+function Modal({ title, menssage, closeModal, openModal, children, variant }) {
+  //console.log('coy children', children)
   return (
-    <div className="modalBackground">
-      <div className="modalContainer">
-        <div className='titleCloseBtn'>
-          <button onClick={()=> closeModal(false)}> X </button>
-        </div>
-        <div className="title">
-            <h1>¿Estás seguro de que quieres abandonar este sitio web?</h1>
-        </div>
-        <div className="body">
-            <p>¡Las suculentas se mueren sin tu atención!</p>
-        </div>
-        <div className="footer">
-            <button onClick={()=> closeModal(false)} id='cancelButton'>Cancelar</button>
-            <button>Continuar</button>
-        </div>
-      </div>
-    </div>
+    <>
+      {openModal && (
+        <Overlay>
+          <ModalContainer>
+            <CloseBtn onClick={() => closeModal(false)}>
+              <i className="fi fi-rs-cross-circle"></i>
+            </CloseBtn>
+            <h3>{title}</h3>
+            <p>{menssage}</p>
+            {children}
+          </ModalContainer>
+
+        </Overlay>
+      )}
+    </>
   );
 }
 
